@@ -13,7 +13,11 @@ dotenv.config({
   path: join(projectDir, ".env.server"),
 })
 
+// 支持通过环境变量配置 base path，用于子路径部署
+const basePath = process.env.BASE_PATH || process.env.VITE_BASE || "/"
+
 export default defineConfig({
+  base: basePath,
   resolve: {
     alias: {
       "~": join(projectDir, "src"),
